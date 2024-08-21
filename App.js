@@ -24,7 +24,6 @@ export default function App() {
       if (storedMedications !== null) {
         const parsedMedications = JSON.parse(storedMedications);
         setMedications(parsedMedications);
-        // Schedule notifications for loaded medications
         parsedMedications.forEach(med => NotificationService.scheduleNotification(med));
       }
     } catch (error) {
@@ -43,7 +42,6 @@ export default function App() {
   const handleSetMedications = (newMedications) => {
     setMedications(newMedications);
     saveMedications(newMedications);
-    // Cancel all existing notifications and reschedule for the new set of medications
     NotificationService.cancelAllNotifications();
     newMedications.forEach(med => NotificationService.scheduleNotification(med));
   };

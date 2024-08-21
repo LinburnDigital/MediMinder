@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 
+
 const ConfirmationModal = ({ isVisible, onConfirm, onCancel, message }) => {
   return (
     <Modal
@@ -24,6 +25,8 @@ const ConfirmationModal = ({ isVisible, onConfirm, onCancel, message }) => {
     </Modal>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   modalOverlay: {

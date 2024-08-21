@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+
 const DropdownSelect = ({ options, selectedValue, onSelect, style }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
@@ -16,6 +19,8 @@ const DropdownSelect = ({ options, selectedValue, onSelect, style }) => {
       <Text style={styles.dropdownItemText}>{item}</Text>
     </TouchableOpacity>
   );
+
+  
 
   return (
     <View style={[styles.dropdownContainer, style]}>
@@ -46,6 +51,8 @@ const DropdownSelect = ({ options, selectedValue, onSelect, style }) => {
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   dropdownContainer: {

@@ -4,6 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CalendarStrip from '../components/CalendarStrip';
 import ConfirmationModal from '../components/ConfirmationModal';
 
+
+
 const HomeScreen = ({ medications, setMedications }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [takenMeds, setTakenMeds] = useState({});
@@ -25,6 +27,8 @@ const HomeScreen = ({ medications, setMedications }) => {
     }
   };
 
+
+
   const saveTakenMeds = async (newTakenMeds) => {
     try {
       await AsyncStorage.setItem('takenMeds', JSON.stringify(newTakenMeds));
@@ -33,10 +37,14 @@ const HomeScreen = ({ medications, setMedications }) => {
     }
   };
 
+
+
   const getDayOfWeek = (date) => {
     const days = ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'];
     return days[date.getDay()];
   };
+
+
 
   const toggleMedicationTaken = (medicationId) => {
     const currentDate = selectedDate.toDateString();
@@ -50,6 +58,8 @@ const HomeScreen = ({ medications, setMedications }) => {
     }
   };
 
+
+
   const updateMedicationStatus = (medicationId, isTaken) => {
     const currentDate = selectedDate.toDateString();
     const newTakenMeds = { ...takenMeds };
@@ -61,6 +71,8 @@ const HomeScreen = ({ medications, setMedications }) => {
     saveTakenMeds(newTakenMeds);
   };
 
+
+
   const handleConfirmUntake = () => {
     if (medicationToToggle) {
       updateMedicationStatus(medicationToToggle, false);
@@ -69,30 +81,36 @@ const HomeScreen = ({ medications, setMedications }) => {
     setMedicationToToggle(null);
   };
 
+
+
   const handleCancelUntake = () => {
     setIsConfirmationVisible(false);
     setMedicationToToggle(null);
   };
+
+
 
   const isMedicationTaken = (medicationId) => {
     const currentDate = selectedDate.toDateString();
     return takenMeds[currentDate] && takenMeds[currentDate][medicationId];
   };
 
+
+
   const filteredMedications = medications.filter(med => {
     if (med.frequency === 'course') {
-      // For course medications, check if the selected date is within the course duration
       const courseStartDate = new Date(med.courseStartDate);
       const courseEndDate = new Date(courseStartDate);
       courseEndDate.setDate(courseEndDate.getDate() + med.courseDuration - 1);
       
       return selectedDate >= courseStartDate && selectedDate <= courseEndDate;
     } else {
-      // For daily or custom schedules, use the existing logic
       const dayOfWeek = getDayOfWeek(selectedDate);
       return med.days ? med.days.includes(dayOfWeek) : true;
     }
   });
+
+
 
   const renderMedicationItem = ({ item }) => {
     const taken = isMedicationTaken(item.id);
@@ -116,6 +134,8 @@ const HomeScreen = ({ medications, setMedications }) => {
     );
   };
 
+
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -137,6 +157,8 @@ const HomeScreen = ({ medications, setMedications }) => {
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   container: {

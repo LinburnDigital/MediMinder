@@ -23,6 +23,8 @@ const CalendarStrip = ({ onDateSelect }) => {
     monthScrollViewRef.current?.scrollTo({ x: MONTH_WIDTH * 6, animated: false });
   }, []);
 
+
+
   const handleMonthScroll = (event) => {
     const scrollX = event.nativeEvent.contentOffset.x;
     const monthIndex = Math.round(scrollX / MONTH_WIDTH);
@@ -32,6 +34,8 @@ const CalendarStrip = ({ onDateSelect }) => {
       updateCurrentMonth(newCurrentDate);
     }
   };
+
+
 
   const updateCurrentMonth = (newCurrentDate) => {
     setCurrentDate(newCurrentDate);
@@ -55,14 +59,20 @@ const CalendarStrip = ({ onDateSelect }) => {
     }
   };
 
+
+
   const handleMonthPress = (month) => {
     updateCurrentMonth(month);
   };
+
+
 
   const handleDatePress = (date) => {
     setSelectedDate(date);
     onDateSelect(date);
   };
+
+
 
   const renderMonth = (month, index) => (
     <TouchableOpacity
@@ -78,6 +88,8 @@ const CalendarStrip = ({ onDateSelect }) => {
       </Text>
     </TouchableOpacity>
   );
+
+
 
   const renderDays = () => {
     const days = [];
@@ -133,10 +145,12 @@ const CalendarStrip = ({ onDateSelect }) => {
   );
 };
 
+
+
 const styles = StyleSheet.create({
   container: {
     height: 100,
-    backgroundColor: '#34495E', // Slightly lighter blue for calendar background
+    backgroundColor: '#34495E',
   },
   monthScrollViewContent: {
     paddingHorizontal: MONTH_WIDTH,
@@ -149,10 +163,10 @@ const styles = StyleSheet.create({
   monthText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#BDC3C7', // Light grey for non-selected months
+    color: '#BDC3C7',
   },
   currentMonthText: {
-    color: '#3498DB', // Bright blue for current month
+    color: '#3498DB',
   },
   dayScrollViewContent: {
     paddingHorizontal: DAY_WIDTH / 2,
@@ -164,24 +178,24 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   selectedDay: {
-    backgroundColor: '#3498DB', // Bright blue for selected day
+    backgroundColor: '#3498DB',
     borderRadius: DAY_WIDTH / 2,
   },
   dayText: {
-    color: '#BDC3C7', // Light grey for day names
+    color: '#BDC3C7',
     fontSize: 12,
   },
   dateText: {
-    color: '#ECF0F1', // Very light grey for date numbers
+    color: '#ECF0F1',
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 4,
   },
   selectedDateText: {
-    color: '#FFFFFF', // White for selected date
+    color: '#FFFFFF',
   },
   todayText: {
-    color: '#ECF0F1', // Very light grey for "Today" text
+    color: '#ECF0F1',
     fontSize: 16,
     textAlign: 'center',
     marginTop: 5,

@@ -10,6 +10,7 @@ const DAYS = ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'];
 const PILL_COUNTS = [1, 2, 3];
 const UNITS = ['mg', 'ml', 'cc'];
 
+
 const AddMedicationForm = ({ onAddMedication }) => {
   const [newMedName, setNewMedName] = useState('');
   const [pillCount, setPillCount] = useState(1);
@@ -24,6 +25,8 @@ const AddMedicationForm = ({ onAddMedication }) => {
   const [courseStartDate, setCourseStartDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
+
+
   const resetForm = () => {
     setNewMedName('');
     setPillCount(1);
@@ -36,6 +39,8 @@ const AddMedicationForm = ({ onAddMedication }) => {
     setCourseDuration('');
     setCourseStartDate(new Date());
   };
+
+
 
   const addMedication = (newMed) => {
     if (newMedName && dosageAmount) {
@@ -69,6 +74,8 @@ const AddMedicationForm = ({ onAddMedication }) => {
     }
   };
 
+
+
   const toggleDay = (day) => {
     if (selectedDays.includes(day)) {
       setSelectedDays(selectedDays.filter(d => d !== day));
@@ -77,11 +84,15 @@ const AddMedicationForm = ({ onAddMedication }) => {
     }
   };
 
+
+
   const onTimeChange = (event, selectedTime) => {
     const currentTime = selectedTime || newMedTime;
     setShowTimePicker(Platform.OS === 'ios');
     setNewMedTime(currentTime);
   };
+
+
 
   const onDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || courseStartDate;
@@ -224,6 +235,8 @@ const AddMedicationForm = ({ onAddMedication }) => {
   );
 };
 
+
+
 const MedicationsScreen = ({ medications, setMedications }) => {
   const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const [medicationToRemove, setMedicationToRemove] = useState(null);
@@ -242,10 +255,14 @@ const MedicationsScreen = ({ medications, setMedications }) => {
     }
   };
 
+
+
   const showRemoveConfirmation = (id) => {
     setMedicationToRemove(id);
     setIsConfirmationVisible(true);
   };
+
+
 
   const removeMedication = () => {
     if (medicationToRemove) {
@@ -260,10 +277,14 @@ const MedicationsScreen = ({ medications, setMedications }) => {
     setIsConfirmationVisible(false);
   };
 
+
+
   const cancelRemove = () => {
     setMedicationToRemove(null);
     setIsConfirmationVisible(false);
   };
+
+
 
   const renderMedicationItem = ({ item }) => (
     <View style={styles.medicationItem}>
@@ -286,6 +307,8 @@ const MedicationsScreen = ({ medications, setMedications }) => {
       </TouchableOpacity>
     </View>
   );
+
+
 
   return (
     <KeyboardAvoidingView 
@@ -317,6 +340,7 @@ const MedicationsScreen = ({ medications, setMedications }) => {
 };
 
   
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -456,6 +480,8 @@ const styles = StyleSheet.create({
   selectedFrequency: {
     backgroundColor: '#3498DB',
   },
+
+//-----COURSE-----
   courseContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -515,6 +541,8 @@ const styles = StyleSheet.create({
   selectedDay: {
     backgroundColor: '#3498DB',
   },
+
+//-----ADD-----
   addButton: {
     backgroundColor: '#3498DB',
     padding: 15,
@@ -526,6 +554,8 @@ const styles = StyleSheet.create({
     color: '#ECF0F1',
     fontWeight: 'bold',
   },
+
+  //-----MED SECTION-----
   medicationItem: {
     flexDirection: 'row',
     padding: 15,
