@@ -18,7 +18,7 @@ class NotificationService {
     const scheduleNotificationForDate = async (date) => {
       date.setHours(hours, minutes, 0, 0);
       
-      // If the time for today has already passed, schedule for tomorrow
+
       if (date.getTime() < Date.now()) {
         date.setDate(date.getDate() + 1);
       }
@@ -30,7 +30,7 @@ class NotificationService {
       };
 
       if (frequency !== 'daily') {
-        trigger.weekday = date.getDay() + 1; // 1-7 for Monday-Sunday
+        trigger.weekday = date.getDay() + 1;
       }
 
       await Notifications.scheduleNotificationAsync({

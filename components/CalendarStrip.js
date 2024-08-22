@@ -49,7 +49,7 @@ const CalendarStrip = ({ onDateSelect }) => {
       setSelectedDate(newSelectedDate);
     }
 
-    // Update month range if we're at the edge
+    // Update month range
     const monthIndex = months.findIndex(month => isSameMonth(month, newCurrentDate));
     if (monthIndex <= 1 || monthIndex >= 11) {
       setMonths(getMonthRange(newCurrentDate));

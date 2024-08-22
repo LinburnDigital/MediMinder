@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     color: '#3498DB',
   },
   timeTaken: {
-    color: '#006400', // Dark green color for better visibility
+    color: '#006400',
   },
   nameAndStatus: {
     flexDirection: 'row',
@@ -215,13 +215,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#ECF0F1',
-    flex: 1, // Allow the name to take up available space
+    flex: 1, 
   },
   takenText: {
-    fontSize: 18, // Increased font size
+    fontSize: 18, 
     fontWeight: 'bold',
     color: '#ECF0F1',
-    marginLeft: 10, // Add some space between the name and TAKEN
+    marginLeft: 10, 
   },
   medicationDosage: {
     fontSize: 14,

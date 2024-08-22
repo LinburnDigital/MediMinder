@@ -269,9 +269,7 @@ const MedicationsScreen = ({ medications, setMedications }) => {
       const updatedMedications = medications.filter(med => med.id !== medicationToRemove);
       setMedications(updatedMedications);
       setMedicationToRemove(null);
-      // Cancel the notification for the removed medication
       NotificationService.cancelAllNotifications();
-      // Reschedule notifications for remaining medications
       updatedMedications.forEach(med => NotificationService.scheduleNotification(med));
     }
     setIsConfirmationVisible(false);
