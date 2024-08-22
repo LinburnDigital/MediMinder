@@ -13,10 +13,14 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const [medications, setMedications] = useState([]);
 
+
+  
   useEffect(() => {
     loadMedications();
     NotificationService.configure();
   }, []);
+
+
 
   const loadMedications = async () => {
     try {
@@ -31,6 +35,8 @@ export default function App() {
     }
   };
 
+
+
   const saveMedications = async (newMedications) => {
     try {
       await AsyncStorage.setItem('medications', JSON.stringify(newMedications));
@@ -39,12 +45,16 @@ export default function App() {
     }
   };
 
+
+
   const handleSetMedications = (newMedications) => {
     setMedications(newMedications);
     saveMedications(newMedications);
     NotificationService.cancelAllNotifications();
     newMedications.forEach(med => NotificationService.scheduleNotification(med));
   };
+
+
 
   return (
     <NavigationContainer>
